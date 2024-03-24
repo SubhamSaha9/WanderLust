@@ -1,0 +1,147 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+    .filter button{
+        /* opacity: 0; */
+        background-color: transparent;
+        border: none;
+    }
+</style>
+<body>
+    <div id="filters">
+        <div class="filter-icon">
+            <div class="filter">
+                <form action="/listings" method="get">
+                    <input type="hidden" id="custId" name="catagory" value="Trending">
+                    <button>
+                        <div><i class="fa-solid fa-fire"></i></div>
+                        <p>Trending</p>
+                    </button>
+                </form>
+            </div>
+            <div class="filter">
+                <form action="/listings" method="get">
+                    <input type="hidden" id="custId" name="catagory" value="Rooms">
+                    <button>
+                        <div><i class="fa-solid fa-bed"></i></div>
+                        <p>Rooms</p>
+                    </button>
+                </form>
+            </div>
+            <div class="filter">
+                <form action="/listings" method="get">
+                    <input type="hidden" id="custId" name="catagory" value="Iconic Cities">
+                    <button>
+                        <div><i class="fa-solid fa-mountain-city"></i></div>
+                        <p>Iconic Cities</p>
+                    </button>
+                </form>
+            </div>
+            <div class="filter">
+                <form action="/listings" method="get">
+                    <input type="hidden" id="custId" name="catagory" value="Mountains">
+                    <button>
+                        <div><i class="fa-solid fa-mountain"></i></div>
+                        <p>Mountains</p>
+                    </button>
+                </form>
+            </div>
+            <div class="filter">
+                <form action="/listings" method="get">
+                    <input type="hidden" id="custId" name="catagory" value="Cabins">
+                    <button>
+                        <div><i class="fa-solid fa-house-chimney"></i></div>
+                        <p>Cabins</p>
+                    </button>
+                </form>
+            </div>
+            <div class="filter">
+                <form action="/listings" method="get">
+                    <input type="hidden" id="custId" name="catagory" value="Beach">
+                    <button>
+                        <div><i class="fa-solid fa-umbrella-beach"></i></div>
+                        <p>Beach</p>
+                    </button>
+                </form>
+            </div>
+            <div class="filter">
+                <form action="/listings" method="get">
+                    <input type="hidden" id="custId" name="catagory" value="Surfing">
+                    <button>
+                        <div><i class="fa-solid fa-person-snowboarding"></i></div>
+                        <p>Surfing</p>
+                    </button>
+                </form>
+            </div>
+            <div class="filter">
+                <form action="/listings" method="get">
+                    <input type="hidden" id="custId" name="catagory" value="OMG">
+                    <button>
+                        <div><i class="fa-solid fa-rocket"></i></div>
+                        <p>OMG</p>
+                    </button>
+                </form>
+            </div>
+            <div class="filter">
+                <form action="/listings" method="get">
+                    <input type="hidden" id="custId" name="catagory" value="Amazing pools">
+                    <button>
+                        <div><i class="fa-solid fa-water-ladder"></i></div>
+                        <p>Amazing pools</p>
+                    </button>
+                </form>
+            </div>
+            <div class="filter">
+                <form action="/listings" method="get">
+                    <input type="hidden" id="custId" name="catagory" value="Castles">
+                    <button>
+                        <div><i class="fa-brands fa-fort-awesome"></i></div>
+                        <p>Castles</p>
+                    </button>
+                </form>
+            </div>
+            <div class="filter">
+                <form action="/listings" method="get">
+                    <input type="hidden" id="custId" name="catagory" value="Canping">
+                    <button>
+                        <div><i class="fa-solid fa-tent"></i></div>
+                        <p>Canping</p>
+                    </button>
+                </form>
+            </div>
+            <div class="filter">
+                <form action="/listings" method="get">
+                    <input type="hidden" id="custId" name="catagory" value="Farms">
+                    <button>
+                        <div><i class="fa-solid fa-tractor"></i></div>
+                        <p>Farms</p>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="tax-toggle">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Display taxes</label>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+        <% for( let listings of allListings ) { %>
+            <a href="/listings/<%= listings._id %>" class="listing-link">
+                <div class="card col listing-card">
+                    <img src="<%= listings.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b><%= listings.title %></b>
+                            <br>
+                            &#8377; <%= listings.price.toLocaleString("en-IN") %> / night
+                            &nbsp;&nbsp;
+                            <i class="tax-info">+ 18% GST</i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+        <% } %>
+    </div>
+</body>
